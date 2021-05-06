@@ -25,11 +25,11 @@ while True:
     number = input("Numero: ")
 
     pic = original.copy()
-    cv.putText(pic, name, (50, 110), cv.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
-    cv.putText(pic, phone, (50, 210), cv.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
-    cv.putText(pic, email, (50, 310), cv.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
-    cv.putText(pic, number, (100, 365), cv.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
-    cv.putText(pic, number, (620, 365), cv.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
+    cv.putText(pic, name, (63, 121 + 25), cv.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
+    cv.putText(pic, phone, (63, 261 + 25), cv.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
+    cv.putText(pic, email, (63, 397 + 25), cv.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
+    cv.putText(pic, number, (104, 483 + 23), cv.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
+    cv.putText(pic, number, (822, 484 + 23), cv.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
 
     cv.imshow('window', pic)
     cv.waitKey(800)
@@ -38,4 +38,3 @@ while True:
     answer = input("Mais rifa para a mesma pessoa? ")
     if (answer != "s") and (answer != "y"):
         break
-
