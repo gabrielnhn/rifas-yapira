@@ -33,7 +33,7 @@ class MyDialog(tkinter.simpledialog.Dialog):
         tkinter.simpledialog.Label(master, text="Nome:").grid(row=0)
         tkinter.simpledialog.Label(master, text="E-mail:").grid(row=1)
         tkinter.simpledialog.Label(master, text="Telefone:").grid(row=2)
-        tkinter.simpledialog.Label(master, text="Numero:").grid(row=3)
+        tkinter.simpledialog.Label(master, text="Numero(s):").grid(row=3)
 
         self.e1 = tkinter.simpledialog.Entry(master)
         self.e2 = tkinter.simpledialog.Entry(master)
