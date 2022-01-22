@@ -1,7 +1,13 @@
 ## Rifas pro Yapira
 
+Pré-requisitos: instale os modulos 'tkinter' e 'cv2':
 
-Só rodar com 
+```bash
+    $ pip install tk
+    $ pip install opencv-python
+```
+
+Depois é só rodar com 
 ```bash
 python3 faz_rifa.py
 ```

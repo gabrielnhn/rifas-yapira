@@ -2,15 +2,13 @@
 """
 Faz rifa pro Tapira!
 
-Modo de uso:
-    $ python3 faz_rifa.py
-    OU
-    $ python3 faz_rifa.py {caminho_ate_foto_da_rifa}
-
-
-Antes disso, instale os modulos 'tkinter' e 'cv2':
+Pré-requisitos: instale os modulos 'tkinter' e 'cv2':
     $ pip install tk
     $ pip install opencv-python
+
+Modo de uso:
+    $ python3 faz_rifa.py
+
 
 """
 
