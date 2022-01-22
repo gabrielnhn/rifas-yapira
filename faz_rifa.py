@@ -110,11 +110,11 @@ if __name__ == "__main__":
         else:
             # high resolution
 
-            cv.putText(pic, name, (63, 121 + 25), cv.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
-            cv.putText(pic, phone, (63, 261 + 25), cv.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
-            cv.putText(pic, email, (63, 397 + 25), cv.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
-            cv.putText(pic, number, (104, 483 + 23), cv.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
-            cv.putText(pic, number, (822, 484 + 23), cv.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
+            cv.putText(pic, name, (100, 235), cv.FONT_HERSHEY_SIMPLEX, fontScale=1.5, color=(0,0,0), thickness=2)
+            cv.putText(pic, email, (100, 470), cv.FONT_HERSHEY_SIMPLEX, fontScale=1.5, color=(0,0,0), thickness=2)
+            cv.putText(pic, phone, (100, 685), cv.FONT_HERSHEY_SIMPLEX, fontScale=1.5, color=(0,0,0), thickness=2)
+            cv.putText(pic, number, (310, 992), cv.FONT_HERSHEY_SIMPLEX, fontScale=2, color=(0,0,0), thickness=2)
+            cv.putText(pic, number, (1847, 992), cv.FONT_HERSHEY_SIMPLEX, fontScale=2, color=(0,0,0), thickness=2)
 
         cv.imshow('Rifa', pic)
         cv.waitKey(800)
