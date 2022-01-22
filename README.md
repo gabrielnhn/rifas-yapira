@@ -3,8 +3,8 @@
 Pré-requisitos: instale os modulos 'tkinter' e 'cv2':
 
 ```bash
-    $ pip install tk
-    $ pip install opencv-python
+$ pip install tk
+$ pip install opencv-python
 ```
 
 Depois é só rodar com 
