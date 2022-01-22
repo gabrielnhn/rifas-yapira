@@ -31,8 +31,8 @@ class MyDialog(tkinter.simpledialog.Dialog):
     def body(self, master):
 
         tkinter.simpledialog.Label(master, text="Nome:").grid(row=0)
-        tkinter.simpledialog.Label(master, text="Telefone:").grid(row=1)
-        tkinter.simpledialog.Label(master, text="E-mail:").grid(row=2)
+        tkinter.simpledialog.Label(master, text="E-mail:").grid(row=1)
+        tkinter.simpledialog.Label(master, text="Telefone:").grid(row=2)
         tkinter.simpledialog.Label(master, text="Numero:").grid(row=3)
 
         self.e1 = tkinter.simpledialog.Entry(master)
@@ -48,10 +48,10 @@ class MyDialog(tkinter.simpledialog.Dialog):
 
     def apply(self):
         name = self.e1.get()
-        phone = self.e2.get()
-        email = self.e3.get()
+        email = self.e2.get()
+        phone = self.e3.get()
         number = self.e4.get()
-        self.values = (name, phone, email, number)
+        self.values = (name, email, phone, number)
 
 if __name__ == "__main__":
 
@@ -72,49 +72,40 @@ if __name__ == "__main__":
     except:
         pass
 
-
-
+    
+    program_dir = os.path.dirname(os.path.realpath(__file__))
     currdir = os.getcwd()
 
-    # GET ORIGINAL IMAGE:
-
-    try:
-        path = ' '.join(sys.argv).split(maxsplit=1)[1]
-    except IndexError:
-        path = tkinter.filedialog.askopenfilename(parent=root, initialdir=currdir, title='Selecione foto da rifa original')
+    path = program_dir+"/rifa.png"
+    if not os.path.isfile(path):
+        path = tkinter.filedialog.askopenfilename(parent=root, initialdir=currdir, title='Selecione o template da rifa')
 
     if not path:
         exit() 
 
     original = cv.imread(path)
 
-    # Get info:
-    popup = MyDialog(root)
-    name, phone, email, number = popup.values
-
     while True:
+        # Get info:
+        popup = MyDialog(root)
+        name, email, phone, number = popup.values
+
+        if not name:
+            # no data was given
+            break
+
         # Print info to image
 
         pic = original.copy()
         height, width, _ = pic.shape
 
-        if height < 500:
-            # low resolution
+        # high resolution
 
-            cv.putText(pic, name, (50, 110), cv.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
-            cv.putText(pic, phone, (50, 210), cv.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
-            cv.putText(pic, email, (50, 310), cv.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
-            cv.putText(pic, number, (100, 365), cv.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
-            cv.putText(pic, number, (620, 365), cv.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
-
-        else:
-            # high resolution
-
-            cv.putText(pic, name, (63, 121 + 25), cv.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
-            cv.putText(pic, phone, (63, 261 + 25), cv.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
-            cv.putText(pic, email, (63, 397 + 25), cv.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
-            cv.putText(pic, number, (104, 483 + 23), cv.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
-            cv.putText(pic, number, (822, 484 + 23), cv.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
+        cv.putText(pic, name, (63, 110), cv.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
+        cv.putText(pic, email, (63, 230), cv.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
+        cv.putText(pic, phone, (63, 335), cv.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
+        cv.putText(pic, number, (130, 490), cv.FONT_HERSHEY_SIMPLEX, fontScale=0.7, color=(0,0,0), thickness=2)
+        cv.putText(pic, number, (900, 490), cv.FONT_HERSHEY_SIMPLEX, fontScale=0.7, color=(0,0,0), thickness=2)
 
         cv.imshow('Rifa', pic)
         cv.waitKey(800)
@@ -127,6 +118,6 @@ if __name__ == "__main__":
         cv.imwrite(path, pic)
 
         # Ask whether there are more numbers
-        number = tkinter.simpledialog.askstring(title="Rifa", prompt="Mais um numero?: ")
-        if not number:
-            break
+        # number = tkinter.simpledialog.askstring(title="Rifa", prompt="Mais um numero?: ")
+        # if not number:
+        #     break
