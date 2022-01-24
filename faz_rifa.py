@@ -8,8 +8,6 @@ Pré-requisitos: instale os modulos 'tkinter' e 'cv2':
 
 Modo de uso:
     $ python3 faz_rifa.py
-
-
 """
 
 __author__ = "Gabriel Hishida and Allan Cedric"
