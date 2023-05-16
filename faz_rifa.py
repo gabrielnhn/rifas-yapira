@@ -12,9 +12,20 @@ Modo de uso:
 
 __author__ = "Gabriel Hishida and Allan Cedric"
 
-import cv2 as cv
+import pip
+
+def import_or_install(package):
+    try:
+        __import__(package)
+    except ImportError:
+        pip.main(['install', package])     
+
+
+import_or_install("cv2")
+import_or_install("tkinter")
+
+
 import sys
-import tkinter
 import tkinter.filedialog
 import tkinter.simpledialog
 import os
@@ -79,7 +90,7 @@ if __name__ == "__main__":
     if not path:
         exit() 
 
-    original = cv.imread(path)
+    original = cv2.imread(path)
 
     while True:
         # Get info:
@@ -97,21 +108,21 @@ if __name__ == "__main__":
 
         # high resolution
 
-        cv.putText(pic, name, (63, 110), cv.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
-        cv.putText(pic, email, (63, 230), cv.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
-        cv.putText(pic, phone, (63, 335), cv.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
-        cv.putText(pic, number, (130, 490), cv.FONT_HERSHEY_SIMPLEX, fontScale=0.7, color=(0,0,0), thickness=2)
-        cv.putText(pic, number, (900, 490), cv.FONT_HERSHEY_SIMPLEX, fontScale=0.7, color=(0,0,0), thickness=2)
+        cv2.putText(pic, name, (63, 110), cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
+        cv2.putText(pic, email, (63, 230), cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
+        cv2.putText(pic, phone, (63, 335), cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
+        cv2.putText(pic, number, (130, 490), cv2.FONT_HERSHEY_SIMPLEX, fontScale=0.7, color=(0,0,0), thickness=2)
+        cv2.putText(pic, number, (900, 490), cv2.FONT_HERSHEY_SIMPLEX, fontScale=0.7, color=(0,0,0), thickness=2)
 
-        cv.imshow('Rifa', pic)
-        cv.waitKey(800)
+        cv2.imshow('Rifa', pic)
+        cv2.waitKey(800)
 
         # Save image
 
         path = tkinter.filedialog.asksaveasfilename(parent=root, initialdir=currdir, title='Salvo a nova rifa aonde?', initialfile=f"{name}-{number}.png")
         if not path:
             exit()
-        cv.imwrite(path, pic)
+        cv2.imwrite(path, pic)
 
         # Ask whether there are more numbers
         # number = tkinter.simpledialog.askstring(title="Rifa", prompt="Mais um numero?: ")
