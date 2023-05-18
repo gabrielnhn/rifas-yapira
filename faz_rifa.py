@@ -21,7 +21,13 @@ def import_or_install(package):
         pip.main(['install', package])     
 
 
-import_or_install("cv2")
+try:
+    import cv2
+except ImportError:
+    pip.main(['install', "opencv-python"])
+    import cv2     
+
+
 import_or_install("tkinter")
 
 
